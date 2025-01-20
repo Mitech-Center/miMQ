@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>myAPI.Presentation</name>
+    </assembly>
+    <members>
+        <member name="M:myAPI.Presentation.Controllers.CompaniesController.GetCompanies">
+            <summary>
+            Liệt kê danh sách Công ty
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
