@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\myAPI.Contracts\myAPI.Contracts.csproj" />
+    <ProjectReference Include="..\myApi.LoggerService\myAPI.InfrastructureService.csproj" />
     <ProjectReference Include="..\myAPI.Service.Contracts\myAPI.Service.Contracts.csproj" />
   </ItemGroup>
 

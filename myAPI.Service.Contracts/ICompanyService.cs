@@ -11,5 +11,6 @@ namespace myAPI.Service.Contracts
     {
         IEnumerable<CompanyDto> GetAllCompanies(bool trackChanges);
         CompanyDto GetCompany(Guid companyId, bool trackChanges);
+        Task<string> Handle(string message);
     }
 }

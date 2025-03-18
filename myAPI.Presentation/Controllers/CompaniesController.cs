@@ -1,6 +1,7 @@
 ﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using myAPI.Service.Contracts;
+using myAPI.Shared.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,14 @@ namespace myAPI.Presentation.Controllers
         {
             var company = _service.CompanyService.GetCompany(id,false);
             return Ok(company);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Publish([FromBody] MessageForPublish message)
+        {
+           
+            await _service.CompanyService.Handle(message.Message);
+            // Process the received string (log it, store it, etc.)
+            return Ok();
         }
     }
 }

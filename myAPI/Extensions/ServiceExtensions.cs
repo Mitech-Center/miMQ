@@ -1,11 +1,16 @@
 ﻿using Asp.Versioning;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using myAPI.Contracts;
+using myAPI.Contracts.MessageBroker.EventBus;
+using myAPI.InfrastructureService.MessageBroker;
 using myAPI.LoggerService;
 using myAPI.Repository;
 using myAPI.Service;
 using myAPI.Service.Contracts;
+using myAPI.Service.MessageService;
 
 namespace myAPI.Extensions
 {
@@ -26,6 +31,28 @@ namespace myAPI.Extensions
         });
         public static void ConfigureLoggerService(this IServiceCollection services) =>
             services.AddSingleton<ILoggerManager, LoggerManager>();
+        public static void ConfigureMessageBrokerService(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<MessageBrokerSettings>(
+                configuration.GetSection("MessageBroker"));
+            services.AddSingleton(sp=>sp.GetRequiredService<IOptions<MessageBrokerSettings>>().Value);
+            services.AddMassTransit(busConfigurator =>
+            {
+                busConfigurator.SetKebabCaseEndpointNameFormatter();
+                busConfigurator.AddConsumer<MessageConsumer>();
+                busConfigurator.UsingRabbitMq((context, cfg) =>
+                {
+                    MessageBrokerSettings settings = context.GetRequiredService<MessageBrokerSettings>();
+                    cfg.Host(new Uri(settings.Host), h=>
+                    {
+                        h.Username(settings.Username);
+                        h.Password(settings.Password);
+                    });
+                    cfg.ConfigureEndpoints(context);
+                });
+            });
+            services.AddTransient<IEventBus, EventBus>();
+        }
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();
         public static void ConfigureServiceManager(this IServiceCollection services) =>

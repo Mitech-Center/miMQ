@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using myAPI.Contracts;
 using myAPI.Extensions;
+using myAPI.InfrastructureService.MessageBroker;
 using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.ConfigureVersioning();
 // Add Swagger
 builder.Services.ConfigureSwagger();
+// Add MessageBroker
+builder.Services.ConfigureMessageBrokerService(builder.Configuration);
 // Add services to the container.
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(myAPI.Presentation.AssemblyReference).Assembly);

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myAPI", "myAPI.csproj", "{5
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myAPI.Contracts", "..\myAPI.Contracts\myAPI.Contracts.csproj", "{AF8E7F72-A762-435C-8EB3-5BD29A0F0F7A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myAPI.LoggerService", "..\myApi.LoggerService\myAPI.LoggerService.csproj", "{58BB5911-DB8B-4247-B15F-3AFD0C12853F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myAPI.InfrastructureService", "..\myApi.LoggerService\myAPI.InfrastructureService.csproj", "{58BB5911-DB8B-4247-B15F-3AFD0C12853F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myAPI.Entities", "..\myAPI.Entities\myAPI.Entities.csproj", "{9A5D5AEE-F8AF-4D60-A025-E82C4BE0DF06}"
 EndProject
@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myAPI.Service", "..\myAPI.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myAPI.Presentation", "..\myAPI.Presentation\myAPI.Presentation.csproj", "{4101392B-5A9B-4F92-AB25-A252725AA168}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myAPI.Shared", "..\myAPI.Shared\myAPI.Shared.csproj", "{48CA5EB9-A48B-4351-9EE2-7FAC0F9B3B06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myAPI.Shared", "..\myAPI.Shared\myAPI.Shared.csproj", "{48CA5EB9-A48B-4351-9EE2-7FAC0F9B3B06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
